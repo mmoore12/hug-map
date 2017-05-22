@@ -1,0 +1,89 @@
+﻿{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "House of Dionysos"
+      },
+      "geometry": {
+        "coordinates": [
+          32.406029,
+          34.758209
+        ],
+        "type": "Point"
+      },
+      "id": "39754ce4c93f15b68dcd2677a1f0c44f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "Church of Saint Lazarus"
+      },
+      "geometry": {
+        "coordinates": [
+          33.634847,
+          34.911516
+        ],
+        "type": "Point"
+      },
+      "id": "4b8e23155f259774e76d51a206b9f028"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "Saint Paul's Pillar"
+      },
+      "geometry": {
+        "coordinates": [
+          32.413549,
+          34.758222
+        ],
+        "type": "Point"
+      },
+      "id": "5c29a73e187e8c0bfaa7cdbb7959460e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "Saint Barnabas Monastary"
+      },
+      "geometry": {
+        "coordinates": [
+          33.880328,
+          35.174786
+        ],
+        "type": "Point"
+      },
+      "id": "8a300c88585aeee85cf4784a84e7174b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "Rock of Aphrodite"
+      },
+      "geometry": {
+        "coordinates": [
+          32.63451,
+          34.663088
+        ],
+        "type": "Point"
+      },
+      "id": "e17b9d1f666fb884a23799f135f2009c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "Salamis"
+      },
+      "geometry": {
+        "coordinates": [
+          33.917764,
+          35.140466
+        ],
+        "type": "Point"
+      },
+      "id": "place.450347960973631"
+    }
+  ],
+  "type": "FeatureCollection"
+}
