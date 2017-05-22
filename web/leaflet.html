@@ -43,16 +43,26 @@
 
     // Define overlays
     let cyprus = omnivore.geojson('cyprus.geojson');
+    let rome = omnivore.geojson('rome.geojson');
+
 
     // Create the map
     let map = L.map('mapid', {
         center: [37.89, 23.99],
         zoom: 2,
-        layers: [darkBaseMap, cyprus]
+        layers: [darkBaseMap, cyprus, rome]
     });
 
     // Add tooltips to overlays
     cyprus.on('ready', function () {
+        map.fitBounds(cyprus.getBounds());
+        cyprus.eachLayer(function (layer) {
+            layer.bindPopup(layer.feature.properties.place_name);
+        });
+    })
+        .addTo(map);
+
+    rome.on('ready', function () {
         map.fitBounds(cyprus.getBounds());
         cyprus.eachLayer(function (layer) {
             layer.bindPopup(layer.feature.properties.place_name);
@@ -66,7 +76,8 @@
     };
 
     let overlays = {
-        "Cyprus": cyprus
+        "Cyprus": cyprus,
+        "Rome": rome
     };
 
     L.control.layers(baseMaps, overlays).addTo(map);

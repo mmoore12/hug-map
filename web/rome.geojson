@@ -1,0 +1,33 @@
+﻿{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "Colosseum"
+      },
+      "geometry": {
+        "coordinates": [
+          12.492382,
+          41.890257
+        ],
+        "type": "Point"
+      },
+      "id": "a9b1b4b37dd9fe1403a240864eaa5f7f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "Saint Peter's Basilica"
+      },
+      "geometry": {
+        "coordinates": [
+          12.453725,
+          41.902159
+        ],
+        "type": "Point"
+      },
+      "id": "b040d8cc9cc62d9b626e3ae8860e7583"
+    }
+  ],
+  "type": "FeatureCollection"
+}
