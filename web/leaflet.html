@@ -42,14 +42,7 @@
     });
 
     // Define overlays
-    let cyprus = omnivore.geojson('cyprus.geojson')
-        .on('ready', function () {
-            map.fitBounds(cyprus.getBounds());
-            cyprus.eachLayer(function (layer) {
-                layer.bindPopup(layer.feature.properties.place_name);
-            });
-        })
-        .addTo(map);
+    let cyprus = omnivore.geojson('cyprus.geojson');
 
     // Create the map
     let map = L.map('map', {
@@ -57,6 +50,15 @@
         zoom: 2,
         layers: [darkBaseMap, cyprus]
     });
+
+    // Add tooltips to overlays
+    cyprus.on('ready', function () {
+        map.fitBounds(cyprus.getBounds());
+        cyprus.eachLayer(function (layer) {
+            layer.bindPopup(layer.feature.properties.place_name);
+        });
+    })
+        .addTo(map);
 
     // Create layer controls
     let baseMaps = {
