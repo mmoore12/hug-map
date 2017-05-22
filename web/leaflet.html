@@ -48,8 +48,8 @@
 
     let cyprus = omnivore.geojson('cyprus.geojson')
         .on('ready', function () {
-            map.fitBounds(runLayer.getBounds());
-            runLayer.eachLayer(function (layer) {
+            map.fitBounds(cyprus.getBounds());
+            cyprus.eachLayer(function (layer) {
                 layer.bindPopup(layer.feature.properties.place_name);
             });
         })
