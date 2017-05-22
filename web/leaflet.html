@@ -36,13 +36,31 @@
 <div id="mapid"></div>
 
 <script>
-    const map = L.map('mapid').setView([37.89, 23.99], 2);
+    let map = L.map('mapid').setView([37.89, 23.99], 2);
 
-    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
-        maxZoom: 10
-    }).addTo(map);
+    let darkBaseMap = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
+        maxZoom: 15
+    });
 
-    omnivore.geojson('cyprus.geojson').addTo(map);
+    let baseMaps = {
+        "Dark": darkBaseMap,
+    };
+
+    let cyprus = omnivore.geojson('cyprus.geojson')
+        .on('ready', function () {
+            map.fitBounds(runLayer.getBounds());
+            runLayer.eachLayer(function (layer) {
+                layer.bindPopup(layer.feature.properties.place_name);
+            });
+        })
+        .addTo(map);
+
+
+    let overlays = {
+        "Cyprus": cyprus
+    };
+
+    L.control.layers(baseMaps, overlays).addTo(map);
 </script>
 
 </body>
