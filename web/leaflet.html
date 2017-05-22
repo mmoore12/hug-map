@@ -34,12 +34,10 @@
 <div id="mapid"></div>
 
 <script>
-    const map = L.map('mapid').setView([37.89, 23.99], 13);
+    const map = L.map('mapid').setView([37.89, 23.99], 2);
 
-    L.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj30h1zti00002rrzyj03rljm/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
-        maxZoom: 18,
-        id: 'mapbox.mapbox-traffic-v1',
-        accessToken: 'pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+    L.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj30hcidn00022so4x38kizlt/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
+        maxZoom: 18
     }).addTo(map);
 </script>
 
