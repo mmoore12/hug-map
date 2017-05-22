@@ -1,8 +1,3 @@
-/********************************************************************
- Create and initialize express application
-
- Exports: application
- ********************************************************************/
 var config		= require('../config'),
 		express		= require('express'),
 		morgan		= require('morgan'),

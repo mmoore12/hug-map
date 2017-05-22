@@ -2,7 +2,7 @@
  Configuration options
  ********************************************************************/
 
-exports.port = 4330;
+exports.port = process.env.PORT || 8080;
 
 exports.logLevel = 'dev';
 
