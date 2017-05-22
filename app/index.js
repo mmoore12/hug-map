@@ -1,14 +1,14 @@
-var config		= require('../config'),
-		express		= require('express'),
-		morgan		= require('morgan'),
-		parser		= require('body-parser');
+const config = require('../config');
+const express = require('express');
+const morgan = require('morgan');
+const parser = require('body-parser');
 
 // Create application
-var app = express();
+const app = express();
 
 // Parse POST requests
 // For future, as this WMS does not currently support POST requests
-app.use(parser.urlencoded({ extended: false }));
+app.use(parser.urlencoded({extended: false}));
 
 // Logging
 app.use(morgan(config.logLevel));
@@ -16,12 +16,12 @@ app.use(morgan(config.logLevel));
 // Routes
 app.use('/', require('./routes'));
 
-//for test files & their resources
-app.use(express.static('./test_pages'));
+// for test files & their resources
+app.use(express.static('./web'));
 
 // For everything else
-app.use(function(req, res, next) {
-	res.status(404).send("ERROR: 404");
+app.use(function (req, res, next) {
+  res.status(404).send('Page not found');
 });
 
 // Export app

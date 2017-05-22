@@ -1,4 +1,3 @@
-
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
 L.mapbox.accessToken = 'pk.eyJ1IjoiY2xhZmVybmV5IiwiYSI6ImI4YTYxODk3MTJmYWY0OWU3MTY1NTU1MDJkN2M5OWQ4In0.q8BO7AkBw7tEh5UKyL8v2A';

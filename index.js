@@ -1,12 +1,6 @@
-/********************************************************************
- Main:  run express application
- ********************************************************************/
-var colors = require('colors');
+const app = require('./app');
+const config = require('./config');
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+console.log('Listening on port ' + config.port + '');
 
-var app = require('./app'),
-	config = require('./config');
-
-console.log(("Listening on port " + config.port + "...").rainbow);
 app.listen(config.port);

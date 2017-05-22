@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "colors": "^1.1.2",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "mapnik": "^3.5.13",
