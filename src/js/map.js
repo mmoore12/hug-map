@@ -113,7 +113,7 @@ leaflet.control.layers(basemapNames, overlayNames).addTo(map);
 
 // Load the images with Webpack
 // https://github.com/PaulLeCam/react-leaflet/issues/255
-leaflet.Icon.Default.imagePath = '.';
+leaflet.Icon.Default.imagePath = './';
 
 leaflet.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
