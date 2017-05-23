@@ -1,62 +1,97 @@
 import omnivore from 'leaflet-omnivore';
 import leaflet from 'leaflet';
 
-// Define basemaps
-let darkBaseMap = leaflet.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
-  maxZoom: 15,
-  minZoom: 2
+let layers = [];
+
+let basemaps = [
+  {
+    name: 'Streets',
+    url: 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+  },
+  {
+    name: 'Outdoors',
+    url: 'https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+  },
+  {
+    name: 'Dark',
+    url: 'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+  },
+  {
+    name: 'Light',
+    url: 'https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+  },
+  {
+    name: 'Satellite',
+    url: 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+  },
+  {
+    name: 'Satellite Streets',
+    url: 'https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+  },
+  {
+    name: 'Traffic day',
+    url: 'https://api.mapbox.com/styles/v1/mapbox/traffic-day-v2/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+  },
+  {
+    name: 'Traffic night',
+    url: 'https://api.mapbox.com/styles/v1/mapbox/traffic-night-v2/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+  }
+];
+
+basemaps.forEach(function (map) {
+  map['layer'] = leaflet.tileLayer(map['url'], {
+    maxZoom: 15,
+    minZoom: 2
+  });
+  layers.add(map['layer']);
 });
 
-let lightBaseMap = leaflet.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318us7m00012rqpg0q8fyfl/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
-  maxZoom: 15,
-  minZoom: 2
-});
+let overlays = [
+  {
+    name: 'Cyprus',
+    path: '/geojson/cyprus.geojson'
+  },
+  {
+    name: 'Rome',
+    path: '/geojson/rome.geojson'
+  }
+];
 
-let satellite = leaflet.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318wk5p000e2ro4upj38gfw/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
-  maxZoom: 15,
-  minZoom: 2
+overlays.forEach(function (overlay) {
+  overlay['layer'] = omnivore.geojson(overlay['path']);
+  layers.add(map['layer']);
 });
-
-// Define overlays
-let cyprus = omnivore.geojson('/geojson/cyprus.geojson');
-let rome = omnivore.geojson('/geojson/rome.geojson');
 
 // Create the map
 let map = leaflet.map('mapid', {
   center: [37.89, 23.99],
   zoom: 3,
   worldCopyJump: true,
-  layers: [darkBaseMap, cyprus, rome]
+  layers: layers
 });
 
 // Add tooltips to overlays
-cyprus.on('ready', function () {
-  cyprus.eachLayer(function (layer) {
-    layer.bindPopup(layer.feature.properties.place_name);
-  });
-})
-    .addTo(map);
-
-rome.on('ready', function () {
-  rome.eachLayer(function (layer) {
-    layer.bindPopup(layer.feature.properties.place_name);
-  });
-})
-    .addTo(map);
+overlays.forEach(function (overlay) {
+  overlay.on('ready', function () {
+    overlay.eachLayer(function (layer) {
+      layer.bindPopup(layer.feature.properties.place_name);
+    });
+  })
+        .addTo(map);
+});
 
 // Create layer controls
-let baseMaps = {
-  'Dark': darkBaseMap,
-  'Light': lightBaseMap,
-  'Satellite': satellite
-};
+let basemapNames = {};
+basemaps.forEach(function (basemap) {
+  basemapNames[basemap.name] = basemapNames[basemap.layer];
+});
 
-let overlays = {
-  'Cyprus': cyprus,
-  'Rome': rome
-};
+let overlayNames = {};
+basemaps.forEach(function (basemap) {
+  overlayNames[basemap.name] = basemapNames[basemap.layer];
+});
 
-leaflet.control.layers(baseMaps, overlays).addTo(map);
+leaflet.control.layers(basemapNames, overlayNames).addTo(map);
 
 // Fix gray gaps between tiles
 // https://github.com/Leaflet/Leaflet/issues/3575
@@ -74,6 +109,7 @@ leaflet.control.layers(baseMaps, overlays).addTo(map);
 })();
 
 // Load the images with Webpack
+// https://github.com/PaulLeCam/react-leaflet/issues/255
 leaflet.Icon.Default.imagePath = '.';
 
 leaflet.Icon.Default.mergeOptions({
