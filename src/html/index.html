@@ -72,8 +72,7 @@
         .addTo(map);
 
     rome.on('ready', function () {
-        map.fitBounds(cyprus.getBounds());
-        cyprus.eachLayer(function (layer) {
+        rome.eachLayer(function (layer) {
             layer.bindPopup(layer.feature.properties.place_name);
         });
     })
