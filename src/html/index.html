@@ -64,7 +64,7 @@
         center: [37.89, 23.99],
         zoom: 3,
         worldCopyJump: true,
-        layers: [lightBaseMap, cyprus, rome]
+        layers: [darkBaseMap, cyprus, rome]
     });
 
 
@@ -97,10 +97,6 @@
     };
 
     L.control.layers(baseMaps, overlays).addTo(map);
-
-
-    // Add scale
-    L.control.scale().addTo(map);
 
 
     // Fix gray gaps between tiles
