@@ -25,6 +25,7 @@ let rome = omnivore.geojson('/geojson/rome.geojson');
 let map = leaflet.map('mapid', {
   center: [37.89, 23.99],
   zoom: 3,
+  worldCopyJump: true,
   layers: [darkBaseMap, cyprus, rome]
 });
 
@@ -71,3 +72,12 @@ leaflet.control.layers(baseMaps, overlays).addTo(map);
     }
   });
 })();
+
+// Load the images with Webpack
+leaflet.Icon.Default.imagePath = '.';
+
+leaflet.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});

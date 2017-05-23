@@ -41,12 +41,13 @@
     "uglify-js": "^2.8.27",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.6.0",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "url-loader": "^0.5.8"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
     "browser-sync": "^2.18.12",
     "browser-sync-webpack-plugin": "^1.1.4",
+    "eslint": "^3.19.0",
     "semistandard": "^11.0.0"
   }
 }
