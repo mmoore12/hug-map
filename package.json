@@ -8,6 +8,11 @@
   "scripts": {
     "start": "node build/server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShepherdJerred/hug-map.git"
+  },
+  "homepage": "https://hug-map.herokuapp.com/",
   "dependencies": {
     "express": "^4.15.2"
   },
