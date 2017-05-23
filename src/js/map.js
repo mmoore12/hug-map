@@ -72,7 +72,7 @@ let map = leaflet.map('mapid', {
 
 // Add tooltips to overlays
 overlays.forEach(function (overlay) {
-  overlay.on('ready', function () {
+  overlay.layer.on('ready', function () {
     overlay.eachLayer(function (layer) {
       layer.bindPopup(layer.feature.properties.place_name);
     });
