@@ -14,7 +14,8 @@ let basemaps = [
   },
   {
     name: 'Dark',
-    url: 'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
+    url: 'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA',
+    default: true
   },
   {
     name: 'Light',
@@ -43,7 +44,9 @@ basemaps.forEach(function (map) {
     maxZoom: 15,
     minZoom: 2
   });
-  // layers.push(map.layer);
+  if (map.default) {
+    layers.push(map.layer);
+  }
 });
 
 let overlays = [
