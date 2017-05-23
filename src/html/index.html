@@ -42,6 +42,16 @@
         minZoom: 2
     });
 
+    let lightBaseMap = L.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318us7m00012rqpg0q8fyfl/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
+        maxZoom: 15,
+        minZoom: 2
+    });
+
+    let satellite = L.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318wk5p000e2ro4upj38gfw/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
+        maxZoom: 15,
+        minZoom: 2
+    });
+
     // Define overlays
     let cyprus = omnivore.geojson('/geojson/cyprus.geojson');
     let rome = omnivore.geojson('/geojson/rome.geojson');
@@ -50,7 +60,7 @@
     let map = L.map('mapid', {
         center: [37.89, 23.99],
         zoom: 3,
-        layers: [darkBaseMap, cyprus, rome]
+        layers: [darkBaseMap, lightBaseMap, satellite, cyprus, rome]
     });
 
     // Add tooltips to overlays
@@ -72,6 +82,8 @@
     // Create layer controls
     let baseMaps = {
         "Dark": darkBaseMap,
+        "Light": lightBaseMap,
+        "Satellite": satellite
     };
 
     let overlays = {
