@@ -39,11 +39,11 @@ let basemaps = [
 ];
 
 basemaps.forEach(function (map) {
-  map['layer'] = leaflet.tileLayer(map['url'], {
+  map.layer = leaflet.tileLayer(map.url, {
     maxZoom: 15,
     minZoom: 2
   });
-  layers.push(map['layer']);
+  layers.push(map.layer);
 });
 
 let overlays = [
@@ -58,8 +58,8 @@ let overlays = [
 ];
 
 overlays.forEach(function (overlay) {
-  overlay['layer'] = omnivore.geojson(overlay['path']);
-  layers.push(map['layer']);
+  overlay.layer = omnivore.geojson(overlay.path);
+  layers.push(map.layer);
 });
 
 // Create the map
@@ -83,12 +83,12 @@ overlays.forEach(function (overlay) {
 // Create layer controls
 let basemapNames = {};
 basemaps.forEach(function (basemap) {
-  basemapNames[basemap.name] = basemapNames[basemap.layer];
+  basemapNames[basemap.name] = basemap.layer;
 });
 
 let overlayNames = {};
-basemaps.forEach(function (basemap) {
-  overlayNames[basemap.name] = basemapNames[basemap.layer];
+overlays.forEach(function (overlay) {
+  overlayNames[overlay.name] = overlay.layer;
 });
 
 leaflet.control.layers(basemapNames, overlayNames).addTo(map);
