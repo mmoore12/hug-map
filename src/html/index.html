@@ -48,15 +48,13 @@
 
     // Create the map
     let map = L.map('mapid', {
-        renderer: L.canvas(),
         center: [37.89, 23.99],
-        zoom: 2,
+        zoom: 3,
         layers: [darkBaseMap, cyprus, rome]
     });
 
     // Add tooltips to overlays
     cyprus.on('ready', function () {
-        map.fitBounds(cyprus.getBounds());
         cyprus.eachLayer(function (layer) {
             layer.bindPopup(layer.feature.properties.place_name);
         });
