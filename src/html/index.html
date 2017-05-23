@@ -63,6 +63,7 @@
     let map = L.map('mapid', {
         center: [37.89, 23.99],
         zoom: 3,
+        worldCopyJump: true,
         layers: [lightBaseMap, cyprus, rome]
     });
 
@@ -101,7 +102,7 @@
     // Add scale
     L.control.scale().addTo(map);
 
-    
+
     // Fix gray gaps between tiles
     // https://github.com/Leaflet/Leaflet/issues/3575
 
