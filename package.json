@@ -1,8 +1,8 @@
 {
-  "name": "70of70",
+  "name": "hug-map",
   "version": "1.0.0",
   "description": "Map of the 70 of 70 sites for Harding University Greece",
-  "main": "index.js",
+  "main": "build/server.js",
   "author": "Jerred Shepherd",
   "license": "GPL-3.0",
   "scripts": {
