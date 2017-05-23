@@ -1,16 +1,18 @@
+import omnivore from 'leaflet-omnivore';
+import leaflet from 'leaflet';
 
 // Define basemaps
-let darkBaseMap = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
+let darkBaseMap = leaflet.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
   maxZoom: 15,
   minZoom: 2
 });
 
-let lightBaseMap = L.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318us7m00012rqpg0q8fyfl/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
+let lightBaseMap = leaflet.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318us7m00012rqpg0q8fyfl/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
   maxZoom: 15,
   minZoom: 2
 });
 
-let satellite = L.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318wk5p000e2ro4upj38gfw/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
+let satellite = leaflet.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318wk5p000e2ro4upj38gfw/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
   maxZoom: 15,
   minZoom: 2
 });
@@ -20,10 +22,10 @@ let cyprus = omnivore.geojson('/geojson/cyprus.geojson');
 let rome = omnivore.geojson('/geojson/rome.geojson');
 
 // Create the map
-let map = L.map('mapid', {
+let map = leaflet.map('mapid', {
   center: [37.89, 23.99],
   zoom: 3,
-  layers: [darkBaseMap, lightBaseMap, satellite, cyprus, rome]
+  layers: [darkBaseMap, cyprus, rome]
 });
 
 // Add tooltips to overlays
@@ -53,14 +55,14 @@ let overlays = {
   'Rome': rome
 };
 
-L.control.layers(baseMaps, overlays).addTo(map);
+leaflet.control.layers(baseMaps, overlays).addTo(map);
 
 // Fix gray gaps between tiles
 // https://github.com/Leaflet/Leaflet/issues/3575
 
 (function () {
-  let originalInitTile = L.GridLayer.prototype._initTile;
-  L.GridLayer.include({
+  let originalInitTile = leaflet.GridLayer.prototype._initTile;
+  leaflet.GridLayer.include({
     _initTile: function (tile) {
       originalInitTile.call(this, tile);
       let tileSize = this.getTileSize();

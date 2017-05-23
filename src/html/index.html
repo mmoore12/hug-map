@@ -6,115 +6,11 @@
     <title>HUG Map</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://unpkg.com/normalize.css@7.0.0">
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
-          integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
-          crossorigin=""/>
-
-    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
-            integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
-            crossorigin=""></script>
-
-    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js"></script>
-
-    <style>
-        body {
-            margin: 0;
-        }
-
-        #mapid {
-            height: 100vh;
-            width: 100vw;
-        }
-    </style>
-
 </head>
 <body>
 
-<div id="mapid"></div>
-
-<script>
-
-    // Define basemaps
-    let darkBaseMap = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
-        maxZoom: 15,
-        minZoom: 3
-    });
-
-    let lightBaseMap = L.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318us7m00012rqpg0q8fyfl/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
-        maxZoom: 15,
-        minZoom: 3
-    });
-
-    let satellite = L.tileLayer('https://api.mapbox.com/styles/v1/shepherdjerred/cj318wk5p000e2ro4upj38gfw/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA', {
-        maxZoom: 15,
-        minZoom: 3
-    });
-
-
-    // Define overlays
-    let cyprus = omnivore.geojson('/geojson/cyprus.geojson');
-    let rome = omnivore.geojson('/geojson/rome.geojson');
-
-
-    // Create the map
-    let map = L.map('mapid', {
-        center: [37.89, 23.99],
-        zoom: 3,
-        worldCopyJump: true,
-        layers: [darkBaseMap, cyprus, rome]
-    });
-
-
-    // Add tooltips to overlays
-    cyprus.on('ready', function () {
-        cyprus.eachLayer(function (layer) {
-            layer.bindPopup(layer.feature.properties.place_name);
-        });
-    })
-        .addTo(map);
-
-    rome.on('ready', function () {
-        rome.eachLayer(function (layer) {
-            layer.bindPopup(layer.feature.properties.place_name);
-        });
-    })
-        .addTo(map);
-
-
-    // Create layer controls
-    let baseMaps = {
-        "Dark": darkBaseMap,
-        "Light": lightBaseMap,
-        "Satellite": satellite
-    };
-
-    let overlays = {
-        "Cyprus": cyprus,
-        "Rome": rome
-    };
-
-    L.control.layers(baseMaps, overlays).addTo(map);
-
-
-    // Fix gray gaps between tiles
-    // https://github.com/Leaflet/Leaflet/issues/3575
-
-    (function () {
-        let originalInitTile = L.GridLayer.prototype._initTile;
-        L.GridLayer.include({
-            _initTile: function (tile) {
-                originalInitTile.call(this, tile);
-                let tileSize = this.getTileSize();
-                tile.style.width = tileSize.x + 1 + 'px';
-                tile.style.height = tileSize.y + 1 + 'px';
-            }
-        });
-    })()
-
-</script>
+<div id="mapid">
+</div>
 
 </body>
 </html>
