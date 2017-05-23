@@ -59,7 +59,7 @@ let overlays = [
 
 overlays.forEach(function (overlay) {
   overlay.layer = omnivore.geojson(overlay.path);
-  layers.push(map.layer);
+  layers.push(overlay.layer);
 });
 
 // Create the map

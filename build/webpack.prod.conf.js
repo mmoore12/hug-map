@@ -6,8 +6,7 @@ const baseWebpackConfig = require('./webpack.base.conf');
 module.exports = merge(baseWebpackConfig, {
   plugins: [
     new UglifyJSPlugin({
-      mangle: false,
-      sourceMap: true
+      mangle: false
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/,
