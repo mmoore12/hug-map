@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>70 of 70</title>
+    <title>HUG Map</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,9 +42,8 @@
     });
 
     // Define overlays
-    let cyprus = omnivore.geojson('cyprus.geojson');
-    let rome = omnivore.geojson('rome.geojson');
-
+    let cyprus = omnivore.geojson('/geojson/cyprus.geojson');
+    let rome = omnivore.geojson('/geojson/rome.geojson');
 
     // Create the map
     let map = L.map('mapid', {

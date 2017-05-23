@@ -3,8 +3,10 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+app.use(express.static('dist'));
+
 app.get('/', function (req, res) {
-  res.sendfile('./web/leaflet.html');
+  res.sendfile('./src/html/index.html');
 });
 
 app.listen(port, function () {
