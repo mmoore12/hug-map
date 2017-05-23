@@ -43,7 +43,7 @@ basemaps.forEach(function (map) {
     maxZoom: 15,
     minZoom: 2
   });
-  layers.push(map.layer);
+  // layers.push(map.layer);
 });
 
 let overlays = [
@@ -73,7 +73,7 @@ let map = leaflet.map('mapid', {
 // Add tooltips to overlays
 overlays.forEach(function (overlay) {
   overlay.layer.on('ready', function () {
-    overlay.eachLayer(function (layer) {
+    overlay.layer.eachLayer(function (layer) {
       layer.bindPopup(layer.feature.properties.place_name);
     });
   })
