@@ -5,6 +5,11 @@ let layers = [];
 
 let basemaps = [
   {
+    name: 'Open Street Map',
+    url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    default: true
+  },
+  {
     name: 'Streets',
     url: 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA'
   },
@@ -15,7 +20,6 @@ let basemaps = [
   {
     name: 'Dark',
     url: 'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hlcGhlcmRqZXJyZWQiLCJhIjoiY2ozMGZ0ZnYwMDAyazJ3bnd2djlucXFvaSJ9.W_8W-wU-OqWec30PX9xbvA',
-    default: true
   },
   {
     name: 'Light',
@@ -41,7 +45,7 @@ let basemaps = [
 
 basemaps.forEach(function (map) {
   map.layer = leaflet.tileLayer(map.url, {
-    maxZoom: 15,
+    maxZoom: 17,
     minZoom: 2
   });
   if (map.default) {

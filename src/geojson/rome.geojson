@@ -3,6 +3,34 @@
     {
       "type": "Feature",
       "properties": {
+        "place_name": "Basilica of Saint Paul Outside the Walls"
+      },
+      "geometry": {
+        "coordinates": [
+          12.476777,
+          41.858696
+        ],
+        "type": "Point"
+      },
+      "id": "50cff4af150f4d87b3408f1c165970dc"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "San Giovanni in Laterano"
+      },
+      "geometry": {
+        "coordinates": [
+          12.505577,
+          41.88587
+        ],
+        "type": "Point"
+      },
+      "id": "9040ecb8122bdef66f011f42bbab98a5"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "place_name": "Colosseum"
       },
       "geometry": {
@@ -27,6 +55,34 @@
         "type": "Point"
       },
       "id": "b040d8cc9cc62d9b626e3ae8860e7583"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "Pantheon"
+      },
+      "geometry": {
+        "coordinates": [
+          12.476831,
+          41.898612
+        ],
+        "type": "Point"
+      },
+      "id": "cc0050d7cdaeecfb191233791b3ba93b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "place_name": "Trevi Fountain"
+      },
+      "geometry": {
+        "coordinates": [
+          12.483284,
+          41.900977
+        ],
+        "type": "Point"
+      },
+      "id": "e37faa49692feeb850d097fd474ceb94"
     }
   ],
   "type": "FeatureCollection"
